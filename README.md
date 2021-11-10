@@ -3,8 +3,8 @@ Stack : Java, Spring, Vue.js (embedded), H2 (embedded)
 # Getting Started
 
 ### Install latest versions:
-* [Java] (https://www.oracle.com/java/technologies/downloads/)
-* [Maven] (https://maven.apache.org/download.cgi)
+* Java (https://www.oracle.com/java/technologies/downloads/)
+* Maven (https://maven.apache.org/download.cgi)
 
 ### Run application in root directory from command prompt:
 
@@ -19,7 +19,7 @@ java -jar FinalProject-0.0.1-SNAPSHOT - в папке target выполнить 
 
 http://localhost:8080/index.html
 
-* [H2 console:]
+* H2 console:
 
 http://localhost:8080/h2-console/
 
@@ -30,6 +30,6 @@ Password: admin
 H2 stores data in file, max-file-size 1Mb, 
 ZIP must contain only article.txt with at least two lines (header, content)
 
-* [Swagger-UI:]
-* 
+* Swagger-UI:
+
 http://localhost:8080/swagger-ui/
