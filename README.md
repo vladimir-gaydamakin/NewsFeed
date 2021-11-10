@@ -4,7 +4,7 @@ Stack : Java, Spring, Vue.js (embedded), H2 (embedded)
 * Java (https://www.oracle.com/java/technologies/downloads/)
 * Maven (https://maven.apache.org/download.cgi)
 
-### Run application in root directory from command prompt:
+### Run application in root directory (FinalProject) from command prompt:
 
 * mvn spring-boot:run
 
