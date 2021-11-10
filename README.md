@@ -1,7 +1,5 @@
 Stack : Java, Spring, Vue.js (embedded), H2 (embedded)
 
-# Getting Started
-
 ### Install latest versions:
 * Java (https://www.oracle.com/java/technologies/downloads/)
 * Maven (https://maven.apache.org/download.cgi)
