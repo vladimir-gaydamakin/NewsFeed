@@ -8,13 +8,13 @@ Stack : Java, Spring, Vue.js (embedded), H2 (embedded)
 
 ### Run application in root directory from command prompt:
 
-mvn spring-boot:run
+* mvn spring-boot:run
 
 or
 
-mvn clean install
-cd target
-java -jar FinalProject-0.0.1-SNAPSHOT - в папке target выполнить команду
+* mvn clean install
+* cd target
+* java -jar FinalProject-0.0.1-SNAPSHOT
 
 
 http://localhost:8080/index.html
