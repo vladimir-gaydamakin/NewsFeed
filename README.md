@@ -22,9 +22,9 @@ http://localhost:8080/index.html
 
 http://localhost:8080/h2-console/
 
-URL: jdbc:h2:file:./data/news
-Login: admin
-Password: admin
+* URL: jdbc:h2:file:./data/news
+* Login: admin
+* Password: admin
 
 H2 stores data in file, max-file-size 1Mb, 
 ZIP must contain only article.txt with at least two lines (header, content)
