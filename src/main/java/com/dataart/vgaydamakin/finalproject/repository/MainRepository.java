@@ -20,7 +20,4 @@ public interface MainRepository extends JpaRepository<News, Long> {
     @Override
     Page<News> findAll(Pageable pageable);
 
-// @Query(value = "insert into News (header, content) values (:header, :content)",
-//         nativeQuery =  true)
-// void insert(String header, String content);
 }

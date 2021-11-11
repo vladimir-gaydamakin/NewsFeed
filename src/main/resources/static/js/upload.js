@@ -1,11 +1,11 @@
-const URL = "/test";
+const UPLOAD_URL = "/upload";
 
 $("#submit").click(function () {
     let file = $("#input").prop("files")[0];
     let formData = new FormData();
     formData.append("file", file);
     $.ajax({
-        url: `${URL}`,
+        url: `${UPLOAD_URL}`,
         type: "POST",
         data: formData,
         cache: false,

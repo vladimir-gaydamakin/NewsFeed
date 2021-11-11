@@ -8,8 +8,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor  // для сериализации, проверить нужен ли...
+@NoArgsConstructor
 public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

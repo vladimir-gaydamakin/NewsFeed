@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>The News Portal</title>
     <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
-    <title>Load article</title>
 </head>
 <body>
-<form method="POST" enctype="multipart/form-data" action="/">
-    <h3>ZipFile to upload:</h3>
-    <input type="file" name="file"><br/>
-    <br/>
-    <input type="submit" id="submit" value="upload"> Press here to upload the file!
+<h3>ZipFile to upload:</h3>
+<form enctype="multipart/form-data">
+    <input type="file" id="input" > <br/><br/>
+    <button type="button" id="submit">UPLOAD ARTICLE</button>
 </form>
-<script src="js/test.js"></script>
+<div class="modal fade" id="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title"></h5>
+            </div>
+            <div class="modal-body">
+                <p class="text" id="modal-text"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="main-page">MAIN PAGE</button>
+<script type="text/javascript" src="js/upload.js"></script>
 </body>
 </html>

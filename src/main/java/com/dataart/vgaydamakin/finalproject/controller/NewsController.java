@@ -15,14 +15,9 @@ public class NewsController {
 
     private final NewsService newsService;
 
-  @GetMapping("/")
+  @GetMapping
   public ResponseEntity<?> getNews() {
       return ResponseEntity.ok(newsService.getNews());
   }
 
-//  @GetMapping("/")
-//  public List<News> getNews() {
-//     // newsService.addNews(new News(666, "NEWHEADER", "FINALLLYY"));
-//      return newsService.getNews();
-//  }
 }

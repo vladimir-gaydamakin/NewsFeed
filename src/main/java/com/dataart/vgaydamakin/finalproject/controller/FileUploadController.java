@@ -16,7 +16,7 @@ import java.io.IOException;
 
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/upload")
 @AllArgsConstructor
 public class FileUploadController {
     private NewsService newsService;
