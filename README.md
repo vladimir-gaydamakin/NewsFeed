@@ -1,7 +1,7 @@
 Stack : Java, Spring, Vue.js (embedded), H2 (embedded)
 
 ### Install latest versions:
-* Java (https://www.oracle.com/java/technologies/downloads/)
+* Java 11+ (https://www.oracle.com/java/technologies/downloads/)
 * Maven (https://maven.apache.org/download.cgi)
 
 ### Run application in root directory (FinalProject) from command prompt:
