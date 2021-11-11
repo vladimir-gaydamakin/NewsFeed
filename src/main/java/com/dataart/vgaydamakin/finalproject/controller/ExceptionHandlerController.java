@@ -21,7 +21,7 @@ public class ExceptionHandlerController {
     @ExceptionHandler(IOException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
-    public ErrorDTO handleIOException(RuntimeException e) {
+    public ErrorDTO handleIOException(IOException e) {
         return new ErrorDTO(e.getMessage());
     }
 
