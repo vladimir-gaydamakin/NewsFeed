@@ -3504,3 +3504,7 @@ select news0_.id as id1_0_, news0_.content as content2_0_, news0_.header as head
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "NEWS" не найдена
 Table "NEWS" not found; SQL statement:
 select news0_.id as id1_0_, news0_.content as content2_0_, news0_.header as header3_0_ from news news0_ order by news0_.id desc [42102-200]
+2021-11-11 15:30:07 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "NEWS" не найдена
+Table "NEWS" not found; SQL statement:
+select * from news [42102-200]
