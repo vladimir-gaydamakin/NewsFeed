@@ -1,37 +1,31 @@
 package com.dataart.vgaydamakin.finalproject.utility;
 
 import com.dataart.vgaydamakin.finalproject.entity.News;
-import com.dataart.vgaydamakin.finalproject.exceptions.*;
+import com.dataart.vgaydamakin.finalproject.exceptions.ArticleFormatException;
+import com.dataart.vgaydamakin.finalproject.exceptions.NotAZipFileException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Iterator;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 @Component
 public class ZipFileHandler {
-    @Value("${temp_path}")
-    private String TEMP_PATH;
 
-    public File convertToZip(MultipartFile input) {
-        if (input != null && !input.isEmpty()) {
-            File temp = new File("D:\\temp2.zip");
-            try {
-                input.transferTo(temp);
-                if (!isZipFile(temp)) {
-                    throw new NotAZipFileException("FILE IS NOT A ZIP !!!!!!");
-                }
-                return temp;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    @Value("${tempfile}")
+    private String tempFileName;
+
+    public ZipFile convertToZip(MultipartFile input) throws IOException {
+        String filePath = new File("").getAbsolutePath() + File.separator + tempFileName;
+        File temp = new File(filePath);
+        input.transferTo(temp);
+        if (!isZipFile(temp)) {
+            throw new NotAZipFileException("FILE IS NOT A ZIP !!!!!!");
         }
-        throw new MyFileNotFoundException("FILE NOT EXISTS OR EMPTY");
+        return new ZipFile(temp);
     }
 
     public boolean zipIsValid(ZipFile input) {
@@ -48,24 +42,22 @@ public class ZipFileHandler {
         return isArticle && count == 1;
     }
 
-    public News getArticleFromZip(ZipFile input) {
+    public News getArticleFromZip(ZipFile input) throws IOException {
         Iterator<? extends ZipEntry> entries = input.stream().iterator();
         while (entries.hasNext()) {
             ZipEntry entry = entries.next();
-            try (BufferedReader br = new BufferedReader(new InputStreamReader(input.getInputStream(entry)))) {
-                String header = br.readLine();
-                StringBuilder content = new StringBuilder();
-                String temp;
-                while ((temp = br.readLine()) != null) {
-                    content.append(temp);
-                }
-                if (header.isEmpty() || content.equals("")) {
-                    throw new ArticleFormatException("Article must contain header and content !!!!");
-                }
-                return new News(header, content.toString());
-            } catch (IOException e) {
-                e.printStackTrace();
+            BufferedReader br = new BufferedReader(new InputStreamReader(input.getInputStream(entry)));
+            String header = br.readLine();
+            StringBuilder content = new StringBuilder();
+            String temp;
+            while ((temp = br.readLine()) != null) {
+                content.append(temp);
             }
+            if (header.isEmpty() || content.equals("")) {
+                throw new ArticleFormatException("Article must contain header and content !!!!");
+            }
+            input.close();
+            return new News(header, content.toString());
         }
         return null;
     }
@@ -73,16 +65,5 @@ public class ZipFileHandler {
     public boolean isZipFile(File file) throws IOException {
         RandomAccessFile raf = new RandomAccessFile(file, "r");
         return raf.readInt() == 0x504B0304;
-    }
-
-    public void deleteFile(String path) {
-        File file = new File(path);
-        if (file != null && Files.exists(Path.of(file.getPath()))) {
-            try {
-                Files.delete(Path.of(file.getPath()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 }

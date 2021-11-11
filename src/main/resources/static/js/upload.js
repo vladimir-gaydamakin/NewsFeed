@@ -13,9 +13,9 @@ $("#submit").click(function () {
         processData: false,
         origin: "*"
     }).done(function () {
-        $("#modal-text").text("The article was successfully added.");
+        $("#text").text("Success!!! Article added");
     }).fail(function (response) {
-        $("#modal-text").text(response.responseJSON.message);
+        $("#text").text(response.responseJSON.message);
     });
 });
 
