@@ -36,11 +36,10 @@ public class NewsService {
                 throw new InvalidZipContentException("ZIP must contain only article.txt file!!!");
             }
             mainRepository.save(zipFileHandler.getArticleFromZip(zip));
+            //zipFileHandler.deleteFile(zip.getName());
         } catch (IOException e) {
             e.printStackTrace();
-        } //finally {
-          //  zipFileHandler.deleteFile(input.getOriginalFilename());
-      //  }
+        }
         return null;
     }
 

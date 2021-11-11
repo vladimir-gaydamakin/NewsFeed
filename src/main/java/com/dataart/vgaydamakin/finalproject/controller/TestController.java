@@ -1,10 +1,8 @@
 package com.dataart.vgaydamakin.finalproject.controller;
 
 import com.dataart.vgaydamakin.finalproject.exceptions.MyFileNotFoundException;
-import com.dataart.vgaydamakin.finalproject.exceptions.NotAZipFileException;
 import com.dataart.vgaydamakin.finalproject.repository.MainRepository;
 import com.dataart.vgaydamakin.finalproject.service.NewsService;
-import com.dataart.vgaydamakin.finalproject.utility.ZipFileHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.zip.ZipFile;
 
 
 @RestController

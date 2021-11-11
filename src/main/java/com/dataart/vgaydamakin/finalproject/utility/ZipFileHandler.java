@@ -20,19 +20,14 @@ public class ZipFileHandler {
 
     public File convertToZip(MultipartFile input) {
         if (input != null && !input.isEmpty()) {
-            System.out.println("convertToZip " + TEMP_PATH);
             File temp = new File("D:\\temp2.zip");
             try {
-                System.out.println("temp + " + temp);
-                System.out.println("input + " + input);
                 input.transferTo(temp);
-                System.out.println("transferTo + " + input);
                 if (!isZipFile(temp)) {
                     throw new NotAZipFileException("FILE IS NOT A ZIP !!!!!!");
                 }
                 return temp;
             } catch (IOException e) {
-                System.out.println("проблемы спередачей мультипарт в файл КОНВЕРТТУЗИП");
                 e.printStackTrace();
             }
         }
@@ -55,11 +50,9 @@ public class ZipFileHandler {
 
     public News getArticleFromZip(ZipFile input) {
         Iterator<? extends ZipEntry> entries = input.stream().iterator();
-        System.out.println("INSDIDE getArticleFromZip");
         while (entries.hasNext()) {
             ZipEntry entry = entries.next();
             try (BufferedReader br = new BufferedReader(new InputStreamReader(input.getInputStream(entry)))) {
-                System.out.println("INSIDE BUFFERED READER");
                 String header = br.readLine();
                 StringBuilder content = new StringBuilder();
                 String temp;
