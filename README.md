@@ -18,6 +18,10 @@ or
 
 http://localhost:8080/index.html
 
+#### Upload Articles:
+
+http://localhost:8080/index.html
+
 #### H2 console:
 
 http://localhost:8080/h2-console/
