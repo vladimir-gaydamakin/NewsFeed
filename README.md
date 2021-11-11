@@ -20,7 +20,7 @@ http://localhost:8080/index.html
 
 #### Upload Articles:
 
-http://localhost:8080/index.html
+http://localhost:8080/upload.html
 
 #### H2 console:
 
