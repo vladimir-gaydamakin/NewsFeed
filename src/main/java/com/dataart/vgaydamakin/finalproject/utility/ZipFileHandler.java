@@ -2,6 +2,7 @@ package com.dataart.vgaydamakin.finalproject.utility;
 
 import com.dataart.vgaydamakin.finalproject.entity.News;
 import com.dataart.vgaydamakin.finalproject.exceptions.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,15 +15,26 @@ import java.util.zip.ZipFile;
 
 @Component
 public class ZipFileHandler {
+    @Value("${temp_path}")
+    private String TEMP_PATH;
 
-    public File convertToZip(MultipartFile input) throws IOException {
+    public File convertToZip(MultipartFile input) {
         if (input != null && !input.isEmpty()) {
-            File temp = new File(input.getOriginalFilename());
-            input.transferTo(temp);
-            if (!isZipFile(temp)) {
-                throw new NotAZipFileException("FILE IS NOT A ZIP !!!!!!");
+            System.out.println("convertToZip " + TEMP_PATH);
+            File temp = new File("D:\\temp2.zip");
+            try {
+                System.out.println("temp + " + temp);
+                System.out.println("input + " + input);
+                input.transferTo(temp);
+                System.out.println("transferTo + " + input);
+                if (!isZipFile(temp)) {
+                    throw new NotAZipFileException("FILE IS NOT A ZIP !!!!!!");
+                }
+                return temp;
+            } catch (IOException e) {
+                System.out.println("проблемы спередачей мультипарт в файл КОНВЕРТТУЗИП");
+                e.printStackTrace();
             }
-            return temp;
         }
         throw new MyFileNotFoundException("FILE NOT EXISTS OR EMPTY");
     }
@@ -43,9 +55,11 @@ public class ZipFileHandler {
 
     public News getArticleFromZip(ZipFile input) {
         Iterator<? extends ZipEntry> entries = input.stream().iterator();
+        System.out.println("INSDIDE getArticleFromZip");
         while (entries.hasNext()) {
             ZipEntry entry = entries.next();
             try (BufferedReader br = new BufferedReader(new InputStreamReader(input.getInputStream(entry)))) {
+                System.out.println("INSIDE BUFFERED READER");
                 String header = br.readLine();
                 StringBuilder content = new StringBuilder();
                 String temp;

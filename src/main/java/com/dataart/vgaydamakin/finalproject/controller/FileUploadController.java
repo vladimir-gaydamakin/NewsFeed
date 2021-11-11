@@ -17,8 +17,8 @@ public class FileUploadController {
 
     private final NewsService newsService;
 
-    @PostMapping("")
-    public ResponseEntity<?> addArticle(@RequestParam("file") MultipartFile file) {
-        return ResponseEntity.ok(newsService.addArticle(file));
-    }
+//  @PostMapping("")
+//  public ResponseEntity<?> addArticle(@RequestParam("file") MultipartFile file) {
+//      return ResponseEntity.ok(newsService.addArticle(file));
+//  }
 }

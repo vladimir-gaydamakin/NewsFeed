@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor  // для сериализации, проверить нужен ли...
 public class News {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String header;
     private String content;

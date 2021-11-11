@@ -2,12 +2,14 @@ package com.dataart.vgaydamakin.finalproject.service;
 
 import com.dataart.vgaydamakin.finalproject.entity.News;
 import com.dataart.vgaydamakin.finalproject.exceptions.InvalidZipContentException;
+import com.dataart.vgaydamakin.finalproject.exceptions.NotAZipFileException;
 import com.dataart.vgaydamakin.finalproject.repository.MainRepository;
 import com.dataart.vgaydamakin.finalproject.utility.ZipFileHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.zip.ZipFile;
@@ -23,19 +25,22 @@ public class NewsService {
         return mainRepository.findAll();
     }
 
-    public News addArticle(MultipartFile input) {
+    public News addArticle(File input) {
         ZipFile inputZip = null;
         try {
-            inputZip = new ZipFile(zipFileHandler.convertToZip(input));
-            if (!zipFileHandler.zipIsValid(inputZip)) {
+            if (!zipFileHandler.isZipFile(input)) {
+                throw new NotAZipFileException("FILE IS NOT A ZIP !!!!!!");
+            }
+            ZipFile zip = new ZipFile(input);
+            if (!zipFileHandler.zipIsValid(zip)) {
                 throw new InvalidZipContentException("ZIP must contain only article.txt file!!!");
             }
-            return mainRepository.save(zipFileHandler.getArticleFromZip(inputZip));
+            mainRepository.save(zipFileHandler.getArticleFromZip(zip));
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            zipFileHandler.deleteFile(input.getOriginalFilename());
-        }
+        } //finally {
+          //  zipFileHandler.deleteFile(input.getOriginalFilename());
+      //  }
         return null;
     }
 

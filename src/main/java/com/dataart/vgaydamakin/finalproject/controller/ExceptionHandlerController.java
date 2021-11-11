@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.dataart.vgaydamakin.finalproject.exceptions.*;
 
+import java.io.IOException;
+
 @ControllerAdvice
 public class ExceptionHandlerController {
 
@@ -13,6 +15,13 @@ public class ExceptionHandlerController {
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public ErrorDTO handleRuntimeException(RuntimeException e) {
+        return new ErrorDTO(e.getMessage());
+    }
+
+    @ExceptionHandler(IOException.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    public ErrorDTO handleIOException(RuntimeException e) {
         return new ErrorDTO(e.getMessage());
     }
 
