@@ -24,7 +24,7 @@ public class FileUploadController {
     public ResponseEntity testUpload(@RequestParam("file") MultipartFile input) throws IOException {
         if (input != null && !input.isEmpty()) {
             newsService.addArticle(input);
-            return ResponseEntity.ok("GOOD");
+            return ResponseEntity.ok("done");
         }
         throw new MyFileNotFoundException("FILE NOT EXISTS OR EMPTY");
     }

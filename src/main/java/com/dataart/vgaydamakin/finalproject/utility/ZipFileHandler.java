@@ -15,19 +15,6 @@ import java.util.zip.ZipFile;
 @Component
 public class ZipFileHandler {
 
-    @Value("${tempfile}")
-    private String tempFileName;
-
-    public ZipFile convertToZip(MultipartFile input) throws IOException {
-        String filePath = new File("").getAbsolutePath() + File.separator + tempFileName;
-        File temp = new File(filePath);
-        input.transferTo(temp);
-        if (!isZipFile(temp)) {
-            throw new NotAZipFileException("FILE IS NOT A ZIP !!!!!!");
-        }
-        return new ZipFile(temp);
-    }
-
     public boolean zipIsValid(ZipFile input) {
         int count = 0;
         boolean isArticle = false;
