@@ -15,6 +15,7 @@
     <description>Javaschool Final Project</description>
     <properties>
         <java.version>11</java.version>
+        <property name="hibernate.hbm2ddl.charset_name" value="UTF-8" />
     </properties>
     <dependencies>
         <dependency>
