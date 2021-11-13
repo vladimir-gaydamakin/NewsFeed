@@ -26,7 +26,7 @@ http://localhost:8080/upload.html
 
 http://localhost:8080/h2-console/
 
-* URL: jdbc:h2:file:./data/news
+* URL: jdbc:h2:file:./src/main/resources/news
 * Login: admin
 * Password: admin
 
