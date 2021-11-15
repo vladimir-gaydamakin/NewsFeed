@@ -4,23 +4,31 @@ import com.dataart.vgaydamakin.finalproject.controller.ExceptionHandlerControlle
 import com.dataart.vgaydamakin.finalproject.controller.FileUploadController;
 import com.dataart.vgaydamakin.finalproject.controller.NewsController;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 class ControllerTests {
 
+	private final String PATH_TO_TESTFILES = File.separator + "src" + File.separator
+			+ "test" + File.separator + "resources" + File.separator;
 	@Autowired
 	private NewsController newsController;
 
@@ -48,12 +56,15 @@ class ControllerTests {
 				.andExpect(status().isOk());
 	}
 
-	@Test
-	public void testUploadController(String filename) throws Exception {
-		//String origin = getClass().getClassLoader().getResource(filename).getPath();
-		//MultipartFile testfile = new MockMultipartFile(origin, filename, "zip" ,new FileInputStream(origin));
-		this.mockMvc.perform(post(""))
-				.andDo(print())
-				.andExpect(status().isOk());
-	}
+//@Test
+//public void testUploadController() throws Exception {
+//	File dir = new File("");
+//	File zip = new File(dir.getAbsolutePath() + PATH_TO_TESTFILES + "validZip.zip");
+//	InputStream fileStream = new FileInputStream(zip);
+//	var file = new MockMultipartFile("validZip.zip",fileStream);
+//	this.mockMvc.perform(multipart("/upload").file(file))
+//			.andDo(print())
+//			.andExpect(status().isOk());
+//}
+
 }
