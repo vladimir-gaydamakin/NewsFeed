@@ -8,17 +8,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -27,34 +23,34 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class ControllerTests {
 
-	private final String PATH_TO_TESTFILES = File.separator + "src" + File.separator
-			+ "test" + File.separator + "resources" + File.separator;
-	@Autowired
-	private NewsController newsController;
+    private final String PATH_TO_TESTFILES = File.separator + "src" + File.separator
+            + "test" + File.separator + "resources" + File.separator;
+    @Autowired
+    private NewsController newsController;
 
-	@Autowired
-	private FileUploadController fileUploadController;
+    @Autowired
+    private FileUploadController fileUploadController;
 
-	@Autowired
-	private ExceptionHandlerController exceptionHandlerController;
+    @Autowired
+    private ExceptionHandlerController exceptionHandlerController;
 
-	@Autowired
-	private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-	@Test
-	public void contextLoads() throws Exception {
-		assertThat(newsController).isNotNull();
-		assertThat(fileUploadController).isNotNull();
-		assertThat(exceptionHandlerController).isNotNull();
+    @Test
+    public void contextLoads() throws Exception {
+        assertThat(newsController).isNotNull();
+        assertThat(fileUploadController).isNotNull();
+        assertThat(exceptionHandlerController).isNotNull();
 
-	}
+    }
 
-	@Test
-	public void testNewsController() throws Exception {
-		this.mockMvc.perform(get("/"))
-				.andDo(print())
-				.andExpect(status().isOk());
-	}
+    @Test
+    public void testNewsController() throws Exception {
+        this.mockMvc.perform(get("/"))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
 
 //@Test
 //public void testUploadController() throws Exception {
