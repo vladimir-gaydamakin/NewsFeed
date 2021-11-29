@@ -9,9 +9,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
-//class ZipHandlerTests {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+class ZipHandlerTests {
 //
 //    @Autowired
 //    private ZipFileHandler zipFileHandler;
@@ -21,4 +21,4 @@ import static org.assertj.core.api.Assertions.assertThat;
 //        assertThat(zipFileHandler).isNotNull();
 //    }
 //
-//}
+}
